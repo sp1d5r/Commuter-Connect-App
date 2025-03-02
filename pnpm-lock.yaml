@@ -17,9 +17,6 @@ importers:
 
   apps/example:
     dependencies:
-      '@commuter-connect/feature-home':
-        specifier: workspace:*
-        version: link:../../packages/feature-home
       '@commuter-connect/ui':
         specifier: workspace:*
         version: link:../../packages/ui

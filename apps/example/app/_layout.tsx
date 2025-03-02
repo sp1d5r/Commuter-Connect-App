@@ -26,7 +26,7 @@ function RootLayoutNav() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack screenOptions={{ headerShown: false }}>
-        {user && user.email ? (
+        {!loading && user ? (
           // Protected Routes
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         ) : (
