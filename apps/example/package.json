@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@acme/app-example",
+  "name": "@commuter-connect/app-example",
   "version": "1.0.0",
   "main": "expo-router/entry",
   "scripts": {
@@ -15,7 +15,7 @@
     "eas-build-post-install": "pnpm run -w build:example"
   },
   "dependencies": {
-    "@acme/feature-home": "workspace:*",
+    "@commuter-connect/feature-home": "workspace:*",
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
@@ -31,6 +31,7 @@
     "expo-symbols": "~0.2.1",
     "expo-system-ui": "~4.0.7",
     "expo-web-browser": "~14.0.2",
+    "firebase": "^11.4.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-native": "0.76.6",
@@ -42,7 +43,7 @@
     "react-native-webview": "13.12.5"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
+    "@commuter-connect/eslint-config": "workspace:*",
     "@babel/core": "^7.25.2",
     "@types/jest": "^29.5.12",
     "@types/react": "~18.3.12",
@@ -53,7 +54,7 @@
     "typescript": "^5.3.3"
   },
   "eslintConfig": {
-    "extends": "@acme/eslint-config",
+    "extends": "@commuter-connect/eslint-config",
     "ignorePatterns": [
       "node_modules",
       "build",
