@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "@acme/feature-home",
+  "name": "@commuter-connect/feature-home",
   "version": "1.0.0",
-  "description": "Acme home feature for React (Native)",
+  "description": "Commuter Connect home feature for React (Native)",
   "author": "Cedric van Putten <me@bycedric.com>",
   "license": "MIT",
   "main": "./build/index.js",
@@ -19,10 +19,10 @@
     "build": "tsup --clean"
   },
   "dependencies": {
-    "@acme/ui": "workspace:*"
+    "@commuter-connect/ui": "workspace:*"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
+    "@commuter-connect/eslint-config": "workspace:*",
     "@testing-library/react-native": "^12.9.0",
     "@tsconfig/recommended": "^1.0.8",
     "@types/jest": "^29.5.14",
@@ -52,7 +52,7 @@
     }
   },
   "eslintConfig": {
-    "extends": "@acme/eslint-config",
+    "extends": "@commuter-connect/eslint-config",
     "ignorePatterns": [
       "node_modules",
       "build"
