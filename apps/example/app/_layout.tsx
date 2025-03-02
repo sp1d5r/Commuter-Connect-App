@@ -2,18 +2,47 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import 'react-native-reanimated';
 
+import { firebaseConfig, initializeFirebase } from '@/constants/FirebaseConfig';
+import { AuthProvider, useAuth } from '@/context/AuthContext';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { WelcomeScreen } from '@/screens/WelcomeScreen';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
+initializeFirebase(firebaseConfig);
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+function RootLayoutNav() {
+  const { user, loading } = useAuth();
   const colorScheme = useColorScheme();
+
+  if (loading) {
+    return null; // Or a loading screen
+  }
+
+  console.log(user, loading);
+
+  return (
+    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <Stack screenOptions={{ headerShown: false }}>
+        {user && user.email ? (
+          // Protected Routes
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        ) : (
+          // Auth Routes (including Welcome, Login, Register)
+          <>
+            <Stack.Screen name="(auth)/index" options={{ headerShown: false }} />
+            <Stack.Screen name="(auth)/login" options={{ headerShown: false }} />
+            <Stack.Screen name="(auth)/register" options={{ headerShown: false }} />
+          </>
+        )}
+      </Stack>
+    </ThemeProvider>
+  );
+}
+
+export default function RootLayout() {
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
@@ -29,8 +58,8 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <WelcomeScreen />
-    </ThemeProvider>
+    <AuthProvider>
+      <RootLayoutNav />
+    </AuthProvider>
   );
 }

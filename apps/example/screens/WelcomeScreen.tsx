@@ -1,7 +1,10 @@
 import { Button, Text } from '@commuter-connect/ui';
+import { useRouter } from 'expo-router';
 import { View, StyleSheet } from 'react-native';
 
 export function WelcomeScreen() {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -14,10 +17,20 @@ export function WelcomeScreen() {
       </View>
 
       <View style={styles.buttonContainer}>
-        <Button variant="primary" size="large" onPress={() => {}} style={styles.button}>
+        <Button
+          variant="primary"
+          size="large"
+          onPress={() => router.push('/(auth)/register')}
+          style={styles.button}
+        >
           Sign Up
         </Button>
-        <Button variant="outline" size="large" onPress={() => {}} style={styles.button}>
+        <Button
+          variant="outline"
+          size="large"
+          onPress={() => router.push('/(auth)/login')}
+          style={styles.button}
+        >
           I Already Have an Account
         </Button>
       </View>
