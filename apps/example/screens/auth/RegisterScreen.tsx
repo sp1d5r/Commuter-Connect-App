@@ -1,5 +1,5 @@
 import { Button, Text } from '@commuter-connect/ui';
-import { useRouter } from 'expo-router';
+import { router } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 
@@ -11,13 +11,12 @@ export function RegisterScreen() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const { register } = useAuth();
-  const router = useRouter();
 
   const handleRegister = async () => {
     try {
       setLoading(true);
       await register(email, name, password);
-      // Navigation will be handled by _layout.tsx based on auth state
+      router.replace('/(tabs)');
     } catch (error) {
       console.error('Registration error:', error);
       // Handle error (show message to user)

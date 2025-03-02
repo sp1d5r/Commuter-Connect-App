@@ -1,5 +1,5 @@
 import { Button, Text } from '@commuter-connect/ui';
-import { useRouter } from 'expo-router';
+import { router } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 
@@ -10,13 +10,12 @@ export function LoginScreen() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
-  const router = useRouter();
 
   const handleLogin = async () => {
     try {
       setLoading(true);
       await login(email, password);
-      // Navigation will be handled by _layout.tsx based on auth state
+      router.replace('/(tabs)');
     } catch (error) {
       console.error('Login error:', error);
       // Handle error (show message to user)
